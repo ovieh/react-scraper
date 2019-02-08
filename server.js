@@ -1,24 +1,24 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const logger = require('morgan');
+const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
+const routes = require('./routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(logger('dev'));
 
-// API calls
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
 
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
+// Mongoose
+const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost/reactscraper';
+mongoose.connect(DB_URI, {useNewUrlParser: true});
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection erro'));
+db.once('open', () => console.log('connected to database'));
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -30,4 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+//Linking Routes
+app.use(routes)
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

@@ -18,9 +18,13 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
+    "got": "^9.6.0",
     "mongoose": "^5.4.10",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0"

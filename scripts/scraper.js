@@ -1,5 +1,4 @@
 const cheerio = require('cheerio');
-const got = require('got');
 const request = require('request');
 
 const parseArticle = article => {

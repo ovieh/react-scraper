@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardBody, CardHeader, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 const Panel = ({ articles }) => {
 
-  const parseArticles = (article, id) => {
-
+  const filterArticles = (articles) => {
+    if (articles){
+      return articles.filter(article => article.saved !== true );
+    }
   }
 
+
   const renderArticles = articles => {
+    
     if(articles && articles.length > 0)
       return articles.map((article, index) => <ListGroupItem key={index}>
         <span>
@@ -28,7 +32,7 @@ const Panel = ({ articles }) => {
       </CardHeader>
       <CardBody>
         <ListGroup>
-          {renderArticles(articles)}
+          {renderArticles(filterArticles(articles))}
         </ListGroup>
       </CardBody>
     </Card>

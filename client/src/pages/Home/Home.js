@@ -16,9 +16,6 @@ const Home = () => {
       .then(response => setArticles(response.data) ) 
   }, []);
 
-  console.log(articles);
-
-
   return(
     <div>
       <Jumbotron />

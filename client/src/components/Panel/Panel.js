@@ -1,6 +1,5 @@
 import React from 'react';
 import {Card, CardBody, CardHeader, ListGroup } from 'reactstrap';
-// import axios from 'axios';
 
 const Panel = props => (
   <Card>

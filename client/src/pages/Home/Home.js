@@ -6,13 +6,16 @@ import Article from '../../components/Article'
 
 import { 
   Container,
-  Button 
+  Button,
+  Alert 
  } from 'reactstrap';
 
 const Home = () => {
 
   const [articles, setArticles] = useState([]);
   const [message, setMessage] = useState('No Scraped Articles');
+  const [visible, setVisible] = useState(false);
+  const [articleCount, setArticleCount] = useState(0);
 
   const saveArticle = async (article) => {
     const result = await  API.saveArticle(article);
@@ -23,8 +26,13 @@ const Home = () => {
   const scrape = async () =>{
     const result = await API.scrape();
     const newArticles = await API.getArticles();
-    console.log(result);
     setArticles(newArticles.data);
+    setArticleCount(result.data.length);
+    setVisible(true);
+  }
+
+  const onDismiss = () => {
+    setVisible(false);
   }
 
   useEffect(()=> {
@@ -41,6 +49,9 @@ const Home = () => {
       <Jumbotron>NYTimes Tech News Scraper</Jumbotron>
       <Container>
         <Panel title="Scraped Articles">
+        <Alert color="info" isOpen={visible} toggle={onDismiss}>
+          {articleCount} New Articles
+        </Alert>
         <Button onClick={()=> scrape() }>Scrape New Articles</Button>
           {articles.length ? (
             articles

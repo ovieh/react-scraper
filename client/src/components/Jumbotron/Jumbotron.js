@@ -1,11 +1,11 @@
 import React from 'react';
 import { Jumbotron } from 'reactstrap';
 
-const Jumbo = () => {
+const Jumbo = props => {
 
   return(
     <Jumbotron>
-      <h1 className="display-3">NYTimes Tech News Scraper</h1>
+      <h1 className="display-3">{props.children}</h1>
     </Jumbotron>
   )
 }

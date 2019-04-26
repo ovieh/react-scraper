@@ -7,7 +7,7 @@ const Nav = () => {
   return(
     <div> 
       <Navbar color='dark'>
-
+        <Link to={'/'}>Tech Scraper</Link>
       </Navbar>
     </div>
   );

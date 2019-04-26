@@ -5,6 +5,14 @@ export default {
     return axios.get('/articles')
   },
   getSavedArticles: function() {
-    return axios.get('articles/saved')
+    return axios.get('/articles/save')
+  },
+  saveArticle: function(article) {
+    return axios.post('/articles/save', article)
+  },
+  unsaveArticle: function(article) {
+    return axios.post('/articles/unsave', article)
   }
+
+
 }

@@ -5,7 +5,7 @@ const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, 
   <ListGroupItem key={index}>
     <ListGroupItemHeading>{headline}</ListGroupItemHeading>
     <ListGroupItemText>{summary}</ListGroupItemText>
-    <Button href={`https://www.nytimes.com${url}`}>View on NYTimes</Button>
+    <Button href={`https://www.nytimes.com${url}`} rel="noopener noreferrer" target="_blank">View on NYTimes</Button>
       {" "}
     <Button onClick={() => handleSubmit(article)} >{buttonText}</Button>
   </ListGroupItem>

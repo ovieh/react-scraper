@@ -1,8 +1,11 @@
 const router = require('express').Router();
-const articleController = require('../../controller/articles')
-const scraper = require('../../scripts/scraper');
+// const articleController = require('../../controller/articles')
+const fetchController = require('../../controller/fetch');
 
 
 router
 	.route('/scrape')
-	.get(scraper.scrapeHeadlines)
+	.get(fetchController.scrapeHeadlines)
+
+module.exports = router;
+

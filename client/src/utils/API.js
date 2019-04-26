@@ -12,6 +12,9 @@ export default {
   },
   unsaveArticle: function(article) {
     return axios.post('/articles/unsave', article)
+  },
+  scrape: function(){
+    return axios.get('/scrape')
   }
 
 

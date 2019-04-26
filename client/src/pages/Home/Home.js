@@ -1,11 +1,12 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Jumbotron from '../../components/Jumbotron'
 import API from '../../utils/API';
 import Panel from '../../components/Panel';
 import Article from '../../components/Article'
 
 import { 
-  Container, 
+  Container,
+  Button 
  } from 'reactstrap';
 
 const Home = () => {
@@ -16,6 +17,13 @@ const Home = () => {
   const saveArticle = async (article) => {
     const result = await  API.saveArticle(article);
     const newArticles = await API.getArticles();
+    setArticles(newArticles.data);
+  }
+
+  const scrape = async () =>{
+    const result = await API.scrape();
+    const newArticles = await API.getArticles();
+    console.log(result);
     setArticles(newArticles.data);
   }
 
@@ -33,6 +41,7 @@ const Home = () => {
       <Jumbotron>NYTimes Tech News Scraper</Jumbotron>
       <Container>
         <Panel title="Scraped Articles">
+        <Button onClick={()=> scrape() }>Scrape New Articles</Button>
           {articles.length ? (
             articles
               .filter(article => article.saved === false)

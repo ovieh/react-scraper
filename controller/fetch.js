@@ -1,5 +1,5 @@
-const articles = require('../models/article');
-const scrape = require('../scripts/scraper');
+const Article = require('../models/article');
+const scraper = require('../scripts/scraper');
 
 module.exports = {
   scrapeHeadlines: function(req,res) {

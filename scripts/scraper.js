@@ -20,9 +20,7 @@ const parseHtml = html => {
 }
 
 module.exports = function scrape() {
-	console.log("blah blah blah")
 	const URL = 'https://www.nytimes.com/section/technology';
-
 	return new Promise((resolve, reject) => {
 		request(URL, (err, res, body) => {
 			if (err) {

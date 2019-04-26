@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const articleController = require('../../controller/articles')
-const fetchController = require('../../controller/fetch');
 
 //This seemingly just displays articles that aren't saved, maybe
 //I don't need it
@@ -32,8 +31,5 @@ router.route('/save')
 router
 		.route('/unsave')
 		.post(articleController.unsave)
-
-// router.route('/scrape')
-// 	.get(fetchController.scrapeHeadlines)
 
 module.exports = router;

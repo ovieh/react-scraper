@@ -43,8 +43,8 @@ const Home = () => {
                   summary={article.summary} 
                   url={article.url} 
                   key={index} 
-                  buttonText='Unsave Article' 
-                  handleSubmit={unsaveArticle} 
+                  buttonText='Comment' 
+                  unsave={unsaveArticle} 
                   id={article._id} 
                   article={article}
                 />

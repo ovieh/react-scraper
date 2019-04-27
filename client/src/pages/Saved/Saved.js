@@ -2,10 +2,10 @@ import React, { useState,useEffect } from 'react';
 import Jumbotron from '../../components/Jumbotron'
 import API from '../../utils/API';
 import Panel from '../../components/Panel';
-import Article from '../../components/Article'
+import Article from '../../components/Article';
 
 import { 
-  Container, 
+  Container,
  } from 'reactstrap';
 
 const Home = () => {

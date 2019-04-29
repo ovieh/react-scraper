@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const articleController = require('../../controller/articles')
+const commentsController = require('../../controller/comments')
 
 //This seemingly just displays articles that aren't saved, maybe
 //I don't need it
@@ -31,5 +32,9 @@ router.route('/save')
 router
 		.route('/unsave')
 		.post(articleController.unsave)
+
+		router
+		.route('/:id/comments/new')
+		.post(commentsController.create);
 
 module.exports = router;

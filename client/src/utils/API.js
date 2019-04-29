@@ -15,6 +15,12 @@ export default {
   },
   scrape: function(){
     return axios.get('/scrape')
+  },
+  saveComment: function(comment, id) {
+    return axios.post(`/articles/${id}/comments/new`, comment)
+  },
+  getComments: function(id){
+    return axios.get(`/articles/${id}/comments/new`);
   }
 
 

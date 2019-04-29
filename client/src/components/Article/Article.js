@@ -31,7 +31,7 @@ const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, 
       }
 
       <Collapse isOpen={collapse}>
-        <Comment />
+        <Comment id={id} />
       </Collapse>
     </ListGroupItem>
   );

@@ -1,4 +1,4 @@
-const Comment = require('../models/comment');
+const Comments = require('../models/comment');
 const Article = require('../models/article');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     .then(article => res.json(article))
     .catch(err => res.status(404).json(err))
   },
-  create: function(req,req) {
+  create: function(req,res) {
     Comments
     .create(req.body)
     .then(newComment => {
@@ -20,6 +20,7 @@ module.exports = {
       );
     })
   .then(data => res.json(data))
+  .then(console.log(req.params.id))
   .catch(err => res.status(404).send(err.message));
   },
   delete: function(req, res) {

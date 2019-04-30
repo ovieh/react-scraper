@@ -15,7 +15,6 @@ module.exports = {
   },
 
   save: function(req, res) {
-    // console.log(req.params.id)
     setSaved(req.body.id, true)
       .then(article => res.json(article))
       .catch(err => res.status(404).json(err))
@@ -30,7 +29,6 @@ module.exports = {
   },
   
   setSaved: function(req, res) {
-    // console.log(req.body._id)
     Article.findByIdAndUpdate(
       req.body._id, { saved: 'true' }
     )

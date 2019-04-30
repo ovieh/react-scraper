@@ -7,7 +7,7 @@ import { ListGroupItem,
 import Comment from '../Comment';
 
 
-const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, article, unsave} ) => {
+const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, article, unsave, comments} ) => {
   const [collapse, setCollapse] = useState(false);
 
   const toggle = () => {

@@ -4,7 +4,7 @@ const commentRoutes = require('./comments');
 const fetchRoute = require('./fetch');
 
 router.use('/articles', articleRoutes);
-router.use('/comments', commentRoutes);
+router.use('/', commentRoutes);
 router.use('/', fetchRoute)
 
 module.exports = router;

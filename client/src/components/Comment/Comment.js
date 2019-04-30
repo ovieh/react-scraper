@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CardBody, 
         Card, 
         Form, 
         FormGroup, 
         Label, 
         Input,
-        Button } from 'reactstrap';
+        Button,
+        ListGroup,
+        ListGroupItem } from 'reactstrap';
 import API from '../../utils/API';
 
 
@@ -16,17 +18,37 @@ const buttonStyle = {
 
 const Comment = ( { id } ) => {
   const [value, setValue] = useState("");
+  const [comments, setComments] = useState([]);
+
+  useEffect(()=> {
+    (async () => {
+      const result = await API.getComments(id);
+      setComments(result.data.comments);
+    })();
+  }, [])
+
+  // Eventually, add prompt to verify user wants to delete comment!
+  const handleDelete = async (commentID) => {
+    API.deleteComment(commentID);
+    
+    const result = await API.getComments(id);
+    setComments(result.data.comments)
+  }
 
   const handleChange = e => {
     setValue(e.target.value);
   }
 
-  const handleSubmit = async (e) => {
-    // alert('a comment was submitted ' + value);
-    API.saveComment({text: value}, id);
-    // const results = await API.getArticles(id);
-    // console.log(results)
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    (async() => {
+      API.saveComment({text: value}, id);
+
+      const result = await API.getComments(id);
+      setComments(result.data.comments);
+      setValue("");
+    })();
+
+    event.preventDefault();
   }
   return (
     <Card>
@@ -35,10 +57,14 @@ const Comment = ( { id } ) => {
           <FormGroup>
             <Label for="comments">Comments</Label>
             <Input name="comment" id="comments" value={value} onChange={handleChange}/>
-          <Button style={buttonStyle} type='submit' value='submit'>Submit</Button>
-
+            <Button style={buttonStyle} type='submit' value='submit'>Submit</Button>
           </FormGroup>
-
+          <ListGroup>
+            {comments.map((comment, key) => 
+              <ListGroupItem key={key}>
+                {comment.text}<Button close onClick={()=> handleDelete(comment._id)} />
+              </ListGroupItem> )}
+          </ListGroup>
         </Form>
       </CardBody>
    </Card>

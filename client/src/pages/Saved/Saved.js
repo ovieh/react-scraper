@@ -20,6 +20,7 @@ const Home = () => {
 
   }
 
+
   useEffect(()=> {
     (async ()=> {
       const result = await API.getArticles();
@@ -47,6 +48,7 @@ const Home = () => {
                   unsave={unsaveArticle} 
                   id={article._id} 
                   article={article}
+                  comments={article.comments}
                 />
             ))
           ) : (<h2>{message}</h2>)}

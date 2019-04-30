@@ -33,8 +33,4 @@ router
 		.route('/unsave')
 		.post(articleController.unsave)
 
-		router
-		.route('/:id/comments/new')
-		.post(commentsController.create);
-
 module.exports = router;

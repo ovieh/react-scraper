@@ -20,7 +20,10 @@ export default {
     return axios.post(`/articles/${id}/comments/new`, comment)
   },
   getComments: function(id){
-    return axios.get(`/articles/${id}/comments/new`);
+    return axios.get(`/articles/${id}/`);
+  },
+  deleteComment: function(id) {
+    return axios.get(`/comments/${id}/delete`)
   }
 
 

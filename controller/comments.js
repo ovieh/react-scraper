@@ -1,4 +1,5 @@
 const Comments = require('../models/comment');
+// const Article = require('./articles');
 const Article = require('../models/article');
 
 module.exports = {
@@ -20,7 +21,6 @@ module.exports = {
       );
     })
   .then(data => res.json(data))
-  .then(console.log(req.params.id))
   .catch(err => res.status(404).send(err.message));
   },
   delete: function(req, res) {

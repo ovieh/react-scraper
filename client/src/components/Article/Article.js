@@ -3,11 +3,11 @@ import { ListGroupItem,
   ListGroupItemHeading, 
   ListGroupItemText, 
   Button,
-  Collapse } from 'reactstrap';
+  Collapse, Container, Row, Col } from 'reactstrap';
 import Comment from '../Comment';
 
 
-const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, article, unsave, comments} ) => {
+const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, article, unsave, image, comments} ) => {
   const [collapse, setCollapse] = useState(false);
 
   const toggle = () => {
@@ -20,15 +20,25 @@ const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, 
         unsave &&
         <Button onClick={() => unsave(article)}  close />
       }
-      <ListGroupItemHeading>{headline}</ListGroupItemHeading>
-      <ListGroupItemText>{summary}</ListGroupItemText>
-      <Button href={`https://www.nytimes.com${url}`} rel="noopener noreferrer" target="_blank">View on NYTimes</Button>
-        {" "}
-      {
-        unsave ? <Button onClick={() => toggle()} >{buttonText}</Button>
-               : <Button onClick={() => handleSubmit(article)}>{buttonText}</Button>
-                 
-      }
+      <Container>
+        <Row>
+          <Col xs="3">
+            <img src={image}/>
+          </Col>
+          <Col xs="9">
+            <ListGroupItemHeading>{headline}</ListGroupItemHeading>
+            <ListGroupItemText>{summary}</ListGroupItemText>
+            
+            <Button href={`https://www.nytimes.com${url}`} rel="noopener noreferrer" target="_blank">View on NYTimes</Button>
+              {" "}
+            {
+              unsave ? <Button onClick={() => toggle()} >{buttonText}</Button>
+                    : <Button onClick={() => handleSubmit(article)}>{buttonText}</Button>
+                      
+            }
+          </Col>
+        </Row>
+      </Container>
 
       <Collapse isOpen={collapse}>
         <Comment id={id} />

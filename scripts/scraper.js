@@ -7,7 +7,8 @@ const parseArticle = article => {
 	return {
 		headline: $.find('h2.css-1dq8tca').text().trim(),
 		summary: $.find('p.css-1echdzn').text().trim(),
-		url: $.find('a').attr('href')
+		url: $.find('a').attr('href'),
+		img: $.find('img').attr('srcset')
 	}
 }
 

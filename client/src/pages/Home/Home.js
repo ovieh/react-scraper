@@ -67,6 +67,7 @@ const Home = () => {
                   handleSubmit={saveArticle} 
                   id={article._id} 
                   article={article}
+                  image={article.img}
                 />
             ))
           ) : (<h2>{message.message}</h2>)}

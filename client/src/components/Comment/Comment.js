@@ -10,7 +10,7 @@ import { CardBody,
         ListGroupItem } from 'reactstrap';
 import API from '../../utils/API';
 
-
+// Refactor so that state is located in parent element!!!
         
 const buttonStyle = {
   marginTop: '2px'
@@ -25,7 +25,7 @@ const Comment = ( { id } ) => {
       const result = await API.getComments(id);
       setComments(result.data.comments);
     })();
-  }, [])
+  },[id])
 
   // Eventually, add prompt to verify user wants to delete comment!
   const handleDelete = async (commentID) => {

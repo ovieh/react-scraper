@@ -13,12 +13,13 @@ import {
 const Home = () => {
 
   const [articles, setArticles] = useState([]);
-  const [message, setMessage] = useState('No Scraped Articles');
   const [visible, setVisible] = useState(false);
   const [articleCount, setArticleCount] = useState(0);
 
+  const message = { message: 'No Sraped Articles'}
+
   const saveArticle = async (article) => {
-    const result = await  API.saveArticle(article);
+    API.saveArticle(article);
     const newArticles = await API.getArticles();
     setArticles(newArticles.data);
   }
@@ -27,7 +28,7 @@ const Home = () => {
     const result = await API.scrape();
     const newArticles = await API.getArticles();
     setArticles(newArticles.data);
-    setArticleCount(result.data.length);
+    setArticleCount(newArticles.data.length - articles.length);
     setVisible(true);
   }
 
@@ -68,7 +69,7 @@ const Home = () => {
                   article={article}
                 />
             ))
-          ) : (<h2>{message}</h2>)}
+          ) : (<h2>{message.message}</h2>)}
         </Panel>
       </Container>
 

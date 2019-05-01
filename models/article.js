@@ -6,7 +6,11 @@ const articleSchema = new Schema({
 		type: String,
 		unique: true
 	},
-	summary: String,
+	summary: {
+		type: String,
+		unique: true,
+		required: true
+	},
 	url: {
 		type: String,
 		unique: { index: { unique: true } },

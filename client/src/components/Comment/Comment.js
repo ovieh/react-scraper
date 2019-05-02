@@ -9,7 +9,7 @@ import { CardBody,
         ListGroup,
         ListGroupItem } from 'reactstrap';
 import API from '../../utils/API';
-import { Spinner } from 'reactstrap';
+import Spinner from '../Spinner';
 
 // Refactor so that state is located in parent element!!!
         
@@ -60,7 +60,7 @@ const Comment = ( { id } ) => {
             <Input name="comment" id="comments" value={value} onChange={handleChange}/>
             <Button style={buttonStyle} type='submit' value='submit'>Submit</Button>
           </FormGroup>
-          <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}>
+          <Suspense fallback={<Spinner />}>
             <ListGroup>
               {comments.map((comment, key) =>
                   <ListGroupItem key={key}>

@@ -11,7 +11,7 @@ const Panel = props => (
         {props.children}
       </ListGroup>
     </CardBody>
-    <CardFooter>{<span>&copy;</span>}Ovieh Mosley</CardFooter>
+    <CardFooter>{<span>&copy;</span>} Ovieh Mosley <a href="https://github.com/ovieh/react-scraper" target="_blank" rel='noreferrer noopener'>Github</a></CardFooter>
   </Card>
 
 );

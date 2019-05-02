@@ -3,11 +3,12 @@ import Jumbotron from '../../components/Jumbotron'
 import API from '../../utils/API';
 import Panel from '../../components/Panel';
 import Article from '../../components/Article'
+import Spinner from '../../components/Spinner';
+
 import { 
   Container,
   Button,
   Alert,
-  Spinner 
  } from 'reactstrap';
 
 // const Panel = lazy(() => import('../../components/Panel'));
@@ -77,7 +78,7 @@ const Home = () => {
                   />
               ))
              
-             : <Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />)
+             : <Spinner />)
 
             }
           </Suspense>

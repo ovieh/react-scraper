@@ -42,8 +42,10 @@
     "url": "https://github.com/ovieh/react-scraperissues"
   },
   "keywords": [
-    "node",
-    "express",
-    "create-react-app"
+    "react-suspense",
+    "mongoose",
+    "mongodb",
+    "react",
+    "express"
   ]
 }

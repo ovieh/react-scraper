@@ -3,10 +3,10 @@ import Jumbotron from '../../components/Jumbotron'
 import API from '../../utils/API';
 import Panel from '../../components/Panel';
 import Article from '../../components/Article';
+import Spinner from '../../components/Spinner';
 
 import { 
   Container,
-  Spinner
  } from 'reactstrap';
 
 const Home = () => {
@@ -21,8 +21,6 @@ const Home = () => {
     setArticles(newArticles.data);
 
   }
-
-
   useEffect(()=> {
     (async ()=> {
       const result = await API.getArticles();
@@ -36,7 +34,7 @@ const Home = () => {
     <div>
       <Jumbotron>NYTimes Tech News Scraper</Jumbotron>
       <Container>
-        {/* <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}> */}
+        <Suspense fallback={<Spinner />}>
           <Panel title="Saved Articles">
             {articles.length ? (
               articles
@@ -57,7 +55,7 @@ const Home = () => {
               ))
             ) : (<h2>{message.message}</h2>)}
           </Panel>
-        {/* </Suspense> */}
+        </Suspense>
       </Container>
 
     </div>

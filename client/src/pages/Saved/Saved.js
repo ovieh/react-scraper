@@ -36,7 +36,7 @@ const Home = () => {
     <div>
       <Jumbotron>NYTimes Tech News Scraper</Jumbotron>
       <Container>
-        <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}>
+        {/* <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}> */}
           <Panel title="Saved Articles">
             {articles.length ? (
               articles
@@ -55,9 +55,9 @@ const Home = () => {
                     image={article.img}
                   />
               ))
-            ) : (<h2>{message}</h2>)}
+            ) : (<h2>{message.message}</h2>)}
           </Panel>
-        </Suspense>
+        {/* </Suspense> */}
       </Container>
 
     </div>

@@ -77,7 +77,7 @@ const Home = () => {
                   />
               ))
              
-             : <p>{message.message}</p>)
+             : <Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />)
 
             }
           </Suspense>

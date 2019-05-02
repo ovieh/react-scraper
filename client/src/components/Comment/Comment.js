@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { CardBody, 
         Card, 
         Form, 
@@ -9,6 +9,7 @@ import { CardBody,
         ListGroup,
         ListGroupItem } from 'reactstrap';
 import API from '../../utils/API';
+import { Spinner } from 'reactstrap';
 
 // Refactor so that state is located in parent element!!!
         
@@ -59,12 +60,14 @@ const Comment = ( { id } ) => {
             <Input name="comment" id="comments" value={value} onChange={handleChange}/>
             <Button style={buttonStyle} type='submit' value='submit'>Submit</Button>
           </FormGroup>
-          <ListGroup>
-            {comments.map((comment, key) => 
-              <ListGroupItem key={key}>
-                {comment.text}<Button close onClick={()=> handleDelete(comment._id)} />
-              </ListGroupItem> )}
-          </ListGroup>
+          <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}>
+            <ListGroup>
+              {comments.map((comment, key) =>
+                  <ListGroupItem key={key}>
+                    {comment.text}<Button close onClick={()=> handleDelete(comment._id)} />
+                  </ListGroupItem> )}
+            </ListGroup>
+          </Suspense> 
         </Form>
       </CardBody>
    </Card>

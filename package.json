@@ -4,8 +4,8 @@
   "description": "MERN Scraper",
   "author": {
     "name": "Ovieh Mosley",
-    "twitter": "",
-    "url": ""
+    "twitter": "ovieh",
+    "url": "http://ovieh.com"
   },
   "license": "MIT",
   "scripts": {
@@ -17,16 +17,22 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.16.4",
-    "mongoose": "^5.5.3",
+    "mongoose": "^5.5.5",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "prettier": "^1.17.0"
   },
   "repository": {
     "type": "git",

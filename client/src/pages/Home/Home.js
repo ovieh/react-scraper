@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Jumbotron from '../../components/Jumbotron'
 import API from '../../utils/API';
 import Panel from '../../components/Panel';
 import Article from '../../components/Article'
-
 import { 
   Container,
   Button,
-  Alert 
+  Alert,
+  Spinner 
  } from 'reactstrap';
+
+// const Panel = lazy(() => import('../../components/Panel'));
+
+const message ={message: 'Press scrape to scrape new articles!'};
 
 const Home = () => {
 
   const [articles, setArticles] = useState([]);
   const [visible, setVisible] = useState(false);
   const [articleCount, setArticleCount] = useState(0);
+  const [isLoading, setisLoading] = useState(true);
 
-  const message = { message: 'No Sraped Articles'}
 
   const saveArticle = async (article) => {
     API.saveArticle(article);
@@ -29,7 +33,6 @@ const Home = () => {
     const newArticles = await API.getArticles();
     setArticles(newArticles.data);
     setArticleCount(newArticles.data.length - articles.length);
-    setVisible(true);
   }
 
   const onDismiss = () => {
@@ -39,7 +42,8 @@ const Home = () => {
   useEffect(()=> {
     (async ()=> {
       const result = await API.getArticles();
-      setArticles(result.data)
+      setArticles(result.data);
+      setisLoading(false)
     })()
     }, []
 
@@ -49,29 +53,38 @@ const Home = () => {
     <div>
       <Jumbotron>NYTimes Tech News Scraper</Jumbotron>
       <Container>
-        <Panel title="Scraped Articles">
-        <Alert color="info" isOpen={visible} toggle={onDismiss}>
-          {articleCount} New Articles
-        </Alert>
-        <Button onClick={()=> scrape() }>Scrape New Articles</Button>
-          {articles.length ? (
-            articles
-              .filter(article => article.saved === false)
-              .map((article,index) => (
-                <Article 
-                  headline={article.headline} 
-                  summary={article.summary} 
-                  url={article.url} 
-                  key={index} 
-                  buttonText='Save Article' 
-                  handleSubmit={saveArticle} 
-                  id={article._id} 
-                  article={article}
-                  image={article.img}
-                />
-            ))
-          ) : (<h2>{message.message}</h2>)}
-        </Panel>
+        <Suspense fallback={<Spinner color='dark' />}>
+          <Panel title="Scraped Articles">
+          <Alert color="info" isOpen={visible} toggle={onDismiss}>
+            {articleCount} New Articles
+          </Alert>
+          <Button onClick={()=> scrape() }>Scrape New Articles</Button>
+          <Suspense fallback={<Spinner color='dark' style={{ width: '10rem', height: '10rem' }} type='grow' />}>
+            {(!isLoading ?
+                articles
+                .filter(article => article.saved === false)
+                .map((article,index) => (
+                  <Article 
+                    headline={article.headline} 
+                    summary={article.summary} 
+                    url={article.url} 
+                    key={index} 
+                    buttonText='Save Article' 
+                    handleSubmit={saveArticle} 
+                    id={article._id} 
+                    article={article}
+                    image={article.img}
+                  />
+              ))
+             
+             : <p>{message.message}</p>)
+
+            }
+          </Suspense>
+
+          </Panel>
+        </Suspense>
+
       </Container>
 
     </div>

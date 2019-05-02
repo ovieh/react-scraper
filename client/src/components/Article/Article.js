@@ -23,7 +23,7 @@ const Article = ( {headline, summary, url, index, buttonText, handleSubmit, id, 
       <Container>
         <Row>
           <Col xs="3">
-            <img src={image}/>
+            <img src={image} alt="" />
           </Col>
           <Col xs="9">
             <ListGroupItemHeading>{headline}</ListGroupItemHeading>

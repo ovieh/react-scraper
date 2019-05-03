@@ -12,13 +12,30 @@ import {
   Alert 
  } from 'reactstrap';
 
-const Home = () => {
+const useStateWithLocalStorage = localStorageKey => {
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem(localStorageKey)) || ''
+  );
 
-  const [articles, setArticles] = useState([]);
+  useEffect(()=> {
+    localStorage.setItem(localStorageKey, JSON.stringify(value));
+  }, [value]);
+
+  return [value, setValue];
+}
+
+const Home = () => {
+  // const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useStateWithLocalStorage(
+    'myArticlesInLocalStorage'
+  );
+
+  console.log(articles)
+
   const [visible, setVisible] = useState(false);
   const [articleCount, setArticleCount] = useState(0);
 
-  const message = { message: 'No Sraped Articles'}
+
 
   const saveArticle = async (article) => {
     API.saveArticle(article);

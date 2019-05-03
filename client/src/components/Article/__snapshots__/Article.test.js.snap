@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article component it matches snapshot 1`] = `
+<li
+  className="list-group-item"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-3"
+      >
+        <img
+          alt=""
+        />
+      </div>
+      <div
+        className="col-9"
+      >
+        <h5
+          className="list-group-item-heading"
+        />
+        <p
+          className="list-group-item-text"
+        />
+        <a
+          aria-label={null}
+          className="btn btn-secondary"
+          href="https://www.nytimes.comundefined"
+          onClick={[Function]}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          View on NYTimes
+        </a>
+         
+        <button
+          aria-label={null}
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="collapse"
+    style={Object {}}
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-body"
+      >
+        <form
+          className=""
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className=""
+              htmlFor="comments"
+            >
+              Comments
+            </label>
+            <input
+              className="form-control"
+              id="comments"
+              name="comment"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+            <button
+              aria-label={null}
+              className="btn btn-secondary"
+              onClick={[Function]}
+              style={
+                Object {
+                  "marginTop": "2px",
+                }
+              }
+              type="submit"
+              value="submit"
+            >
+              Submit
+            </button>
+          </div>
+          <ul
+            className="list-group"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</li>
+`;

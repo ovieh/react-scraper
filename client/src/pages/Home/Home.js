@@ -44,7 +44,7 @@ const Home = () => {
   }
 
   const scrape = async () =>{
-    const result = await API.scrape();
+    API.scrape();
     const newArticles = await API.getArticles();
     setArticles(newArticles.data);
     setArticleCount(newArticles.data.length - articles.length);

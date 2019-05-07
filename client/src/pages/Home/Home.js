@@ -77,6 +77,7 @@ const Home = () => {
           {articles.length ? (
             articles
               .filter(article => article.saved === false)
+              .reverse()
               .map((article,index) => (
                 <Article 
                   headline={article.headline} 
